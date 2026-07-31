@@ -1,0 +1,11 @@
+{
+  "installCommand": "cd FrontendTask && npm ci",
+  "buildCommand": "cd FrontendTask && npm run build",
+  "outputDirectory": "FrontendTask/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
