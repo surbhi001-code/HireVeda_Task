@@ -73,9 +73,18 @@ export default function CandidateFormSteps({ form }) {
             label="Phone number"
             required
             type="tel"
+            inputMode="tel"
+            maxLength={20}
             placeholder="+91 98765 43210"
             value={candidate.basic.phone}
-            onChange={(event) => setBasic("phone", event.target.value)}
+            onChange={(event) => {
+              const value = event.target.value;
+              if (
+                /^[+\d\s()-]*$/.test(value) &&
+                value.replace(/\D/g, "").length <= 15
+              )
+                setBasic("phone", value);
+            }}
             error={errors.phone}
           />
           <Field

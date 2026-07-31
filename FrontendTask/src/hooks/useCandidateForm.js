@@ -56,6 +56,11 @@ export function useCandidateForm(initialCandidate) {
         next.email = "Enter a valid email address";
       if (!candidate.basic.phone.trim())
         next.phone = "Phone number is required";
+      else if (
+        candidate.basic.phone.replace(/\D/g, "").length < 7 ||
+        candidate.basic.phone.replace(/\D/g, "").length > 15
+      )
+        next.phone = "Enter a valid phone number (7–15 digits)";
       if (!candidate.basic.location.trim())
         next.location = "Location is required";
       if (candidate.basic.linkedin && !candidate.basic.linkedin.includes("."))
